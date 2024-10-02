@@ -1,121 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:background="#e1ecf2">
 
-    <!-- Mortgage Principal Amount -->
+    <!-- View for Title  -->
     <TextView
-        android:id="@+id/mortgage_principal_label"
+        android:id="@+id/mortgage_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mortgage principal amount"
-        android:textSize="18sp"/>
+        android:text="Mortgage Calculator"
+        android:textColor="#27353d"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="16dp"/>
 
-    <EditText
-        android:id="@+id/mortgage_principal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter amount"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-    android:padding="12dp"/>
+    <!-- View for info text -->
 
-    <!-- Interest Rate -->
     <TextView
-        android:id="@+id/interest_rate_label"
+        android:id="@+id/app_description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Interest Rate (%)"
-        android:textSize="18sp"/>
+        android:layout_marginTop="56dp"
+        android:gravity="center"
+        android:text="Please fill in the details below to calculate your estimated monthly mortgage payment"
+        android:textColor="#27353d"
+        android:textSize="15sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/interest_rate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter interest rate"
-        android:inputType="numberDecimal"
-        android:minHeight="48dp"
-        android:padding="12dp"/>
+    <!-- Create new layout for items -->
+    <LinearLayout
+        android:layout_width="374dp"
+        android:layout_height="624dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/calculate_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mortgage_title">
 
-    <!-- Amortization Period -->
-    <TextView
-        android:id="@+id/amortization_period_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Amortization Period (Years)"
-        android:textSize="18sp"/>
-
-    <EditText
-        android:id="@+id/amortization_period"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter number of years (1-30)"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:importantForAutofill="yes"/>
-
-    <!-- Payment Frequency -->
-    <TextView
-        android:id="@+id/payment_frequency_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Payment Frequency"
-        android:textSize="18sp"/>
-
-    <Spinner
-        android:id="@+id/payment_frequency"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:padding="12dp"
-        android:entries="@array/payment_frequency"/>
-
-    <!-- Lump Sum Payment Option -->
-    <TextView
-        android:id="@+id/lump_sum_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do you plan on making any lump-sum payments?"
-        android:textSize="18sp"/>
-
-    <RadioGroup
-        android:id="@+id/lump_sum_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/lump_sum_yes"
+        <!-- Principal Amount View-->
+        <TextView
+            android:id="@+id/mortgage_principal_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes"/>
+            android:layout_marginTop="20sp"
+            android:text="Mortgage principal amount"
+            android:textSize="18sp" />
 
-        <RadioButton
-            android:id="@+id/lump_sum_no"
+        <EditText
+            android:id="@+id/mortgage_principal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter amount"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <!-- Interest Rate View -->
+        <TextView
+            android:id="@+id/interest_rate_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"
-            android:checked="true"/>
-    </RadioGroup>
+            android:layout_marginTop="20sp"
+            android:text="Interest Rate (%)"
+            android:textSize="18sp" />
 
-    <!-- Lump Sum Amount Field (hidden by default) -->
-    <EditText
-        android:id="@+id/lump_sum_amount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter lump sum amount"
-        android:visibility="gone"
-        android:inputType="numberDecimal"/>
-    <!-- Calculate Button -->
+        <EditText
+            android:id="@+id/interest_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter interest rate"
+            android:inputType="numberDecimal"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <!-- Amortization Period View-->
+        <TextView
+            android:id="@+id/amortization_period_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text="Amortization Period (Years)"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/amortization_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter number of years (1-30)"
+            android:importantForAutofill="yes"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <!-- Payment Frequency View -->
+        <TextView
+            android:id="@+id/payment_frequency_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text="Payment Frequency"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/payment_frequency"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/payment_frequency"
+            android:minHeight="48dp"
+            android:padding="12dp" />
+
+        <!-- Lump Sum Payment Option View -->
+        <TextView
+            android:id="@+id/lump_sum_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:text="Do you plan on making any lump-sum payments?"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/lump_sum_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/lump_sum_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes" />
+
+            <RadioButton
+                android:id="@+id/lump_sum_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="No" />
+        </RadioGroup>
+
+        <!-- Lump Sum Amount Field View -->
+        <EditText
+            android:id="@+id/lump_sum_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:hint="Enter lump sum amount"
+            android:inputType="numberDecimal"
+            android:visibility="gone" />
+
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/calculate_button"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#27353d"
+        android:padding="12dp"
         android:text="Calculate Payments"
-        android:textSize="20sp" />
-
-</LinearLayout>
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

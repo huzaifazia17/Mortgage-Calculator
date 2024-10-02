@@ -12,12 +12,15 @@ public class MortgageCalculationActivity extends AppCompatActivity {
     private TextView principalText, interestRateText, amortizationText, frequencyText, lumpSumOptionText, lumpSumAmountText, monthlyPaymentText;
     private Button calculateAgainButton;
 
+    // When the activity is initialized, this method will initialize all the views, will get the intent data from the main page, display the values in the xml file
+    // and setup the return button
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mortgage_calculation);
 
-        // Initialize views
+        // Views
         principalText = findViewById(R.id.display_principal);
         interestRateText = findViewById(R.id.display_interest_rate);
         amortizationText = findViewById(R.id.display_amortization);
@@ -27,7 +30,7 @@ public class MortgageCalculationActivity extends AppCompatActivity {
         monthlyPaymentText = findViewById(R.id.display_monthly_payment);
         calculateAgainButton = findViewById(R.id.calculate_again_button);
 
-        // Get intent data from MainActivity
+        // Get the intent data from MainActivity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             double principal = extras.getDouble("principal");
@@ -54,13 +57,13 @@ public class MortgageCalculationActivity extends AppCompatActivity {
             monthlyPaymentText.setText("$" + String.format("%.2f", monthlyPayment));
         }
 
-        // Set up the button to go back to the main activity
+        // button to go back to the main activity
         calculateAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MortgageCalculationActivity.this, MainActivity.class);
                 startActivity(intent);
-                finish(); // Optionally finish this activity so it won't stay in the back stack
+                finish();
             }
         });
     }

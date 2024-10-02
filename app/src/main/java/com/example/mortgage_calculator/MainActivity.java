@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initialize views
+        // Initialize the views
         principalInput = findViewById(R.id.mortgage_principal);
         interestRateInput = findViewById(R.id.interest_rate);
         amortizationInput = findViewById(R.id.amortization_period);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         lumpSumAmountInput = findViewById(R.id.lump_sum_amount);
         calculateButton = findViewById(R.id.calculate_button);
 
-        // Handle lump-sum radio button selection
+        // Method to handle if radio button is selected for lump sump payments
         lumpSumGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -44,10 +44,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // On click method for the calculate mortgage button. On click the method will validate that all input fields
+        // have entries in them and will pass on the values to the next page using the built in Intent functions.
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Validate inputs
+                // Check the inputs
                 if (principalInput.getText().toString().isEmpty() ||
                         interestRateInput.getText().toString().isEmpty() ||
                         amortizationInput.getText().toString().isEmpty()) {
@@ -55,21 +57,21 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-                // Validate radio button selection
+                // Check radio button selection
                 int lumpSumOption = lumpSumGroup.getCheckedRadioButtonId();
                 if (lumpSumOption == -1) {
                     Toast.makeText(MainActivity.this, "Please select a lump-sum option", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Capture input values
+                // Capture the input values
                 double principal = Double.parseDouble(principalInput.getText().toString());
                 double interestRate = Double.parseDouble(interestRateInput.getText().toString());
                 int amortizationPeriod = Integer.parseInt(amortizationInput.getText().toString());
                 String paymentFrequency = frequencySpinner.getSelectedItem().toString();
                 double lumpSumAmount = 0;
 
-                // If lump sum is selected, validate and capture its value
+                // If lump sum is selected, validate it and capture the value
                 if (lumpSumOption == R.id.lump_sum_yes) {
                     if (lumpSumAmountInput.getText().toString().isEmpty()) {
                         Toast.makeText(MainActivity.this, "Please enter lump sum amount", Toast.LENGTH_SHORT).show();
@@ -82,12 +84,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
+                // EMI calculation
                 double monthlyRate = (interestRate / 100) / 12;
                 int numberOfPayments = amortizationPeriod * 12;
                 double monthlyPayment = (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numberOfPayments));
 
 
-                // Pass the data to the next activity
+                // Pass info to the next activity (mortgage calculation)
                 Intent intent = new Intent(MainActivity.this, MortgageCalculationActivity.class);
                 intent.putExtra("principal", principal);
                 intent.putExtra("interestRate", interestRate);
