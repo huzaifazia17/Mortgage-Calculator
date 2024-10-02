@@ -1,49 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
+    android:background="#2C2C2C"> <!-- Darker background color -->
 
-    <!-- Display Mortgage Details -->
+    <!-- Title: Mortgage Calculation -->
     <TextView
-        android:id="@+id/display_principal"
+        android:id="@+id/mortgage_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:text="Mortgage Calculation"
+        android:textColor="#FF5722"
+    android:textSize="32sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginBottom="16dp"/>
 
-    <TextView
-        android:id="@+id/display_interest_rate"
-        android:layout_width="wrap_content"
+    <!-- TextView Table: Labels -->
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/mortgage_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calculate_again_button">
 
-    <TextView
-        android:id="@+id/display_amortization"
-        android:layout_width="wrap_content"
+        <!-- Row for Principal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Principal Amount:"
+                android:textColor="#CCCCCC"
+                android:textSize="18sp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_principal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!-- Row for Interest Rate -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Interest Rate:"
+                android:textColor="#CCCCCC"
+                android:textSize="18sp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_interest_rate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!-- Row for Amortization Period -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Amortization Period:"
+                android:textColor="#CCCCCC"
+                android:textSize="18sp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_amortization"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!-- Row for Payment Frequency -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Payment Frequency:"
+                android:textColor="#CCCCCC"
+                android:textSize="18sp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_frequency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <!-- Row for Lump Sum Option -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lump Sum Payment:"
+                android:textColor="#CCCCCC"
+                android:textSize="18sp"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_lump_sum_option"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+
+        <!-- Row for Monthly Payment -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Monthly Payment:"
+                android:textColor="#CCCCCC"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:paddingEnd="8dp"/>
+
+            <TextView
+                android:id="@+id/display_monthly_payment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="--"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Calculate Again Button -->
+    <Button
+        android:id="@+id/calculate_again_button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="18sp"/>
+        android:text="Calculate Mortgage Again"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#FF5722"
+    android:padding="12dp"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintWidth_percent="1"/>
 
-    <TextView
-        android:id="@+id/display_frequency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"/>
-
-    <TextView
-        android:id="@+id/display_lump_sum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"/>
-
-    <!-- Display Calculated Monthly Payment -->
-    <TextView
-        android:id="@+id/monthly_payment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Estimated Monthly Payment: "
-        android:textSize="20sp"
-        android:textStyle="bold"/>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
