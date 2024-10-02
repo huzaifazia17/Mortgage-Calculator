@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Mortgage Principal Amount -->
+    <TextView
+        android:id="@+id/mortgage_principal_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mortgage principal amount"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/mortgage_principal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter amount"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+    android:padding="12dp"/>
+
+    <!-- Interest Rate -->
+    <TextView
+        android:id="@+id/interest_rate_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interest Rate (%)"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/interest_rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter interest rate"
+        android:inputType="numberDecimal"
+        android:minHeight="48dp"
+        android:padding="12dp"/>
+
+    <!-- Amortization Period -->
+    <TextView
+        android:id="@+id/amortization_period_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Amortization Period (Years)"
+        android:textSize="18sp"/>
+
+    <EditText
+        android:id="@+id/amortization_period"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter number of years (1-30)"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:importantForAutofill="yes"/>
+
+    <!-- Payment Frequency -->
+    <TextView
+        android:id="@+id/payment_frequency_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Frequency"
+        android:textSize="18sp"/>
+
+    <Spinner
+        android:id="@+id/payment_frequency"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp"
+        android:padding="12dp"
+        android:entries="@array/payment_frequency"/>
+
+    <!-- Lump Sum Payment Option -->
+    <TextView
+        android:id="@+id/lump_sum_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do you plan on making any lump-sum payments?"
+        android:textSize="18sp"/>
+
+    <RadioGroup
+        android:id="@+id/lump_sum_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/lump_sum_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Yes"/>
+
+        <RadioButton
+            android:id="@+id/lump_sum_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No"
+            android:checked="true"/>
+    </RadioGroup>
+
+    <!-- Calculate Button -->
+    <Button
+        android:id="@+id/calculate_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate Payments"
+        android:textSize="20sp"/>
+
+</LinearLayout>
