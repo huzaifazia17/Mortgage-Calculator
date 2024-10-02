@@ -23,7 +23,7 @@ public class MortgageCalculationActivity extends AppCompatActivity {
         amortizationText = findViewById(R.id.display_amortization);
         frequencyText = findViewById(R.id.display_frequency);
         lumpSumOptionText = findViewById(R.id.display_lump_sum_option);
-        //lumpSumAmountText = findViewById(R.id.display_lump_sum_amount);
+        lumpSumAmountText = findViewById(R.id.display_lump_sum_amount);
         monthlyPaymentText = findViewById(R.id.display_monthly_payment);
         calculateAgainButton = findViewById(R.id.calculate_again_button);
 
@@ -46,8 +46,8 @@ public class MortgageCalculationActivity extends AppCompatActivity {
             lumpSumOptionText.setText(lumpSumOption);
 
             // Display lump sum amount if applicable
-            if (lumpSumOption.equals("Yes")) {
-                lumpSumAmountText.setText("" + lumpSumAmount);
+            if (lumpSumOption.equals("")) {
+                lumpSumAmountText.setText("" + "    $" + lumpSumAmount);
                 lumpSumAmountText.setVisibility(View.VISIBLE);  // Make the text view visible
             }
 

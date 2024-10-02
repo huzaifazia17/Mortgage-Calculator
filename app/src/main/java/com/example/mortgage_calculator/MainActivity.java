@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("interestRate", interestRate);
                 intent.putExtra("amortizationPeriod", amortizationPeriod);
                 intent.putExtra("paymentFrequency", paymentFrequency);
-                intent.putExtra("lumpSum", lumpSumOption == R.id.lump_sum_yes ? "Yes" : "No");
+                intent.putExtra("lumpSum", lumpSumOption == R.id.lump_sum_yes ? "" : "$0");
                 intent.putExtra("lumpSumAmount", lumpSumAmount);  // Pass lump-sum amount if applicable
                 intent.putExtra("monthlyPayment", monthlyPayment);
                 startActivity(intent);
